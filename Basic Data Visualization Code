@@ -1,0 +1,28 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Sample data: Monthly sales data
+data = {
+    'Month': ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'Aug'],
+    'Sales': [1500, 2000, 2500, 3000, 3500, 4000, 4500, 4200, ]
+}
+
+# Create a DataFrame
+df = pd.DataFrame(data)
+
+# Set the figure size
+plt.figure(figsize=(10, 6))
+
+# Create a bar chart
+plt.bar(df['Month'], df['Sales'], color='skyblue')
+
+# Add title and labels
+plt.title('Monthly Sales Data', fontsize=16)
+plt.xlabel('Month', fontsize=14)
+plt.ylabel('Sales ($)', fontsize=14)
+
+# Show grid
+plt.grid(axis='y')
+
+# Display the plot
+plt.show()
