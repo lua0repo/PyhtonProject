@@ -1,0 +1,41 @@
+import random
+
+class Flashcard:
+    def __init__(self, question, answer):
+        self.question = question
+        self.answer = answer
+
+class FlashcardQuiz:
+    def __init__(self):
+        self.flashcards = []
+        self.load_flashcards()
+
+    def load_flashcards(self):
+        # Sample flashcards (you can expand this list)
+        self.flashcards.append(Flashcard("What is the capital of France?", "Paris"))
+        self.flashcards.append(Flashcard("What is 2 + 2?", "4"))
+        self.flashcards.append(Flashcard("What is the largest planet in our solar system?", "Jupiter"))
+        self.flashcards.append(Flashcard("What is the chemical symbol for water?", "H2O"))
+        self.flashcards.append(Flashcard("Who wrote 'Romeo and Juliet'?", "William Shakespeare"))
+
+    def start_quiz(self):
+        print("Welcome to the Flashcard Quiz!")
+        random.shuffle(self.flashcards)  # Shuffle the flashcards for randomness
+        score = 0
+
+        for flashcard in self.flashcards:
+            user_answer = input(f"Question: {flashcard.question} \nYour answer: ")
+            if user_answer.strip().lower() == flashcard.answer.lower():
+                print("Correct!\n")
+                score += 1
+            else:
+                print(f"Wrong! The correct answer is: {flashcard.answer}\n")
+
+        print(f"Quiz finished! Your score: {score}/{len(self.flashcards)}")
+
+def main():
+    quiz = FlashcardQuiz()
+    quiz.start_quiz()
+
+if __name__ == "__main__":
+    main()
