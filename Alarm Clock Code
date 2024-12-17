@@ -1,0 +1,28 @@
+import datetime
+import time
+from playsound import playsound
+
+def set_alarm():
+    """Set the alarm time."""
+    alarm_time = input("Enter the alarm time (HH:MM:SS): ")
+    return alarm_time
+
+def check_alarm(alarm_time):
+    """Check if the current time matches the alarm time."""
+    while True:
+        current_time = datetime.datetime.now().strftime("%H:%M:%S")
+        print(f"Current time: {current_time}", end="\r")  # Overwrite the line
+        if current_time == alarm_time:
+            print("\nAlarm ringing!")
+            playsound('alarm_sound.mp3')  # Replace with your sound file
+            break
+        time.sleep(1)  # Check every second
+
+def main():
+    print("Welcome to the Alarm Clock!")
+    alarm_time = set_alarm()
+    print(f"Alarm set for {alarm_time}.")
+    check_alarm(alarm_time)
+
+if __name__ == "__main__":
+    main()
