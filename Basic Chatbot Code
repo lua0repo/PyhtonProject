@@ -1,0 +1,41 @@
+import random
+
+class Chatbot:
+    def __init__(self):
+        self.greetings = ["Hello!", "Hi there!", "Greetings!", "Howdy!", "Hey!"]
+        self.farewells = ["Goodbye!", "See you later!", "Take care!", "Bye!"]
+        self.responses = {
+            "how are you": ["I'm just a computer program, but thanks for asking!", "Doing well, how about you?", "I'm here to assist you!"],
+            "what is your name": ["I'm a simple chatbot created to chat with you.", "You can call me Chatbot!", "I don't have a name, but I'm here to help!"],
+            "what can you do": ["I can chat with you and answer simple questions.", "I can provide information and have a conversation.", "I'm here to assist you with your queries!"],
+            "tell me a joke": ["Why did the scarecrow win an award? Because he was outstanding in his field!", "Why don't scientists trust atoms? Because they make up everything!"],
+        }
+
+    def greet(self):
+        return random.choice(self.greetings)
+
+    def farewell(self):
+        return random.choice(self.farewells)
+
+    def get_response(self, user_input):
+        user_input = user_input.lower()
+        for key in self.responses:
+            if key in user_input:
+                return random.choice(self.responses[key])
+        return "I'm sorry, I don't understand that."
+
+def main():
+    print("Welcome to the Chatbot! Type 'exit' to end the conversation.")
+    bot = Chatbot()
+    print(bot.greet())
+
+    while True:
+        user_input = input("You: ")
+        if user_input.lower() == 'exit':
+            print(bot.farewell())
+            break
+        response = bot.get_response(user_input)
+        print(f"Chatbot: {response}")
+
+if __name__ == "__main__":
+    main()
