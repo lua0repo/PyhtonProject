@@ -1,0 +1,47 @@
+import random
+
+def choose_word():
+    """Choose a random word from a predefined list."""
+    words = ['python', 'java', 'kotlin', 'javascript', 'ruby', 'swift', 'golang']
+    return random.choice(words)
+
+def display_word(word, guessed_letters):
+    """Display the current state of the word with guessed letters."""
+    displayed_word = ''.join(letter if letter in guessed_letters else '_' for letter in word)
+    return displayed_word
+
+def main():
+    print("Welcome to the Guess the Word Game!")
+    word_to_guess = choose_word()
+    guessed_letters = set()
+    attempts = 6  # Number of attempts allowed
+
+    while attempts > 0:
+        print(f"\nWord to guess: {display_word(word_to_guess, guessed_letters)}")
+        print(f"Attempts remaining: {attempts}")
+        guess = input("Guess a letter: ").lower()
+
+        if len(guess) != 1 or not guess.isalpha():
+            print("Please enter a single letter.")
+            continue
+
+        if guess in guessed_letters:
+            print("You've already guessed that letter.")
+            continue
+
+        guessed_letters.add(guess)
+
+        if guess in word_to_guess:
+            print("Good guess!")
+        else:
+            print("Sorry, that letter is not in the word.")
+            attempts -= 1
+
+        if all(letter in guessed_letters for letter in word_to_guess):
+            print(f"\nCongratulations! You've guessed the word: {word_to_guess}")
+            break
+    else:
+        print(f"\nOut of attempts! The word was: {word_to_guess}")
+
+if __name__ == "__main__":
+    main()
