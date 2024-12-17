@@ -1,0 +1,36 @@
+import random
+
+def roll_dice(num_dice, num_sides):
+    """Rolls the specified number of dice with the specified number of sides."""
+    rolls = [random.randint(1, num_sides) for _ in range(num_dice)]
+    return rolls
+
+def main():
+    print("Welcome to the Dice Roller!")
+    
+    while True:
+        try:
+            num_dice = int(input("Enter the number of dice to roll (1-10): "))
+            if num_dice < 1 or num_dice > 10:
+                print("Please enter a number between 1 and 10.")
+                continue
+            
+            num_sides = int(input("Enter the number of sides on the dice (4, 6, 8, 10, 12, 20): "))
+            if num_sides not in [4, 6, 8, 10, 12, 20]:
+                print("Please enter a valid number of sides (4, 6, 8, 10, 12, 20).")
+                continue
+            
+            rolls = roll_dice(num_dice, num_sides)
+            print(f"You rolled: {rolls}")
+            print(f"Total: {sum(rolls)}")
+        
+        except ValueError:
+            print("Invalid input. Please enter numeric values.")
+        
+        again = input("Do you want to roll again? (y/n): ").lower()
+        if again != 'y':
+            print("Thanks for using the Dice Roller! Goodbye!")
+            break
+
+if __name__ == "__main__":
+    main()
