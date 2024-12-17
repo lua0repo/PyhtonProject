@@ -1,0 +1,52 @@
+import requests
+
+def get_exchange_rates(api_key):
+    """Fetches exchange rates from the API."""
+    url = f"https://v6.exchangerate-api.com/v6/{api_key}/latest/USD"
+    response = requests.get(url)
+    
+    if response.status_code == 200:
+        return response.json()['conversion_rates']
+    else:
+        print("Error fetching exchange rates.")
+        return None
+
+def convert_currency(amount, from_currency, to_currency, rates):
+    """Converts the amount from one currency to another using the provided rates."""
+    if from_currency != 'USD':
+        amount = amount / rates[from_currency]  # Convert to USD first
+    return amount * rates[to_currency]
+
+def main():
+    api_key = 'YOUR_API_KEY'  # Replace with your actual API key
+    rates = get_exchange_rates(api_key)
+    
+    if rates is None:
+        return  # Exit if rates could not be fetched
+
+    print("Welcome to the Currency Converter!")
+    print("Available currencies:", ', '.join(rates.keys()))
+
+    while True:
+        try:
+            amount = float(input("Enter the amount you want to convert: "))
+            from_currency = input("Enter the currency you are converting from (e.g., USD, EUR): ").upper()
+            to_currency = input("Enter the currency you are converting to (e.g., USD, EUR): ").upper()
+
+            if from_currency not in rates or to_currency not in rates:
+                print("Invalid currency. Please try again.")
+                continue
+
+            converted_amount = convert_currency(amount, from_currency, to_currency, rates)
+            print(f"{amount} {from_currency} is equal to {converted_amount:.2f} {to_currency}")
+
+        except ValueError:
+            print("Invalid input. Please enter numeric values.")
+        
+        again = input("Do you want to convert another amount? (y/n): ").lower()
+        if again != 'y':
+            print("Thanks for using the Currency Converter! Goodbye!")
+            break
+
+if __name__ == "__main__":
+    main()
