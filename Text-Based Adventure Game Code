@@ -1,0 +1,66 @@
+import random
+
+class Game:
+    def __init__(self):
+        self.player_health = 100
+        self.monster_health = 50
+        self.treasures = 0
+        self.is_running = True
+
+    def start(self):
+        print("Welcome to the Dungeon Adventure!")
+        print("You are an adventurer exploring a dark dungeon.")
+        print("Your goal is to defeat the monster and collect treasures.")
+        print("You can 'fight' the monster, 'explore' for treasures, or 'quit' the game.")
+
+        while self.is_running:
+            action = input("\nWhat do you want to do? (fight/explore/quit): ").lower()
+            if action == 'fight':
+                self.fight()
+            elif action == 'explore':
+                self.explore()
+            elif action == 'quit':
+                self.quit()
+            else:
+                print("Invalid action. Please choose 'fight', 'explore', or 'quit'.")
+
+    def fight(self):
+        print("\nYou encounter a monster!")
+        while self.monster_health > 0 and self.player_health > 0:
+            player_attack = random.randint(10, 30)
+            monster_attack = random.randint(5, 15)
+
+            self.monster_health -= player_attack
+            self.player_health -= monster_attack
+
+            print(f"You attack the monster for {player_attack} damage.")
+            print(f"The monster attacks you for {monster_attack} damage.")
+            print(f"Your health: {self.player_health}, Monster's health: {self.monster_health}")
+
+        if self.player_health <= 0:
+            print("You have been defeated by the monster. Game over!")
+            self.is_running = False
+        elif self.monster_health <= 0:
+            print("You have defeated the monster!")
+            self.treasures += random.randint(1, 5)
+            print(f"You collected {self.treasures} treasures!")
+
+            # Reset monster health for future fights
+            self.monster_health = 50
+
+    def explore(self):
+        found_treasure = random.choice([True, False])
+        if found_treasure:
+            treasure = random.randint(1, 3)
+            self.treasures += treasure
+            print(f"You found {treasure} treasures! Total treasures: {self.treasures}")
+        else:
+            print("You found nothing. Keep exploring!")
+
+    def quit(self):
+        print(f"\nThanks for playing! You collected {self.treasures} treasures.")
+        self.is_running = False
+
+if __name__ == "__main__":
+    game = Game()
+    game.start()
