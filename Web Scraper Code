@@ -1,0 +1,30 @@
+import requests
+from bs4 import BeautifulSoup
+
+def scrape_quotes(url):
+    # Send a GET request to the specified URL
+    response = requests.get(url)
+    
+    # Check if the request was successful
+    if response.status_code == 200:
+        # Parse the HTML content using BeautifulSoup
+        soup = BeautifulSoup(response.text, 'html.parser')
+        
+        # Find all quote elements
+        quotes = soup.find_all('div', class_='quote')
+        
+        # Extract and print the text and author of each quote
+        for quote in quotes:
+            text = quote.find('span', class_='text').get_text()
+            author = quote.find('small', class_='author').get_text()
+            print(f'"{text}" - {author}')
+    else:
+        print(f"Failed to retrieve quotes. Status code: {response.status_code}")
+
+def main():
+    url = 'http://quotes.toscrape.com/'
+    print("Scraping quotes from:", url)
+    scrape_quotes(url)
+
+if __name__ == "__main__":
+    main()
