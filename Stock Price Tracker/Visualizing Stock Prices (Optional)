@@ -1,0 +1,14 @@
+import yfinance as yf
+import matplotlib.pyplot as plt
+
+def plot_stock_history(stock_symbol):
+    stock = yf.Ticker(stock_symbol)
+    data = stock.history(period="1mo")  # Fetch last month of data
+    data['Close'].plot(title=f"{stock_symbol} Stock Price")
+    plt.xlabel("Date")
+    plt.ylabel("Price (USD)")
+    plt.show()
+
+# User input for stock symbol
+stock_symbol = input("Enter a stock symbol (e.g., AAPL for Apple): ")
+plot_stock_history(stock_symbol)
