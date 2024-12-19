@@ -1,0 +1,12 @@
+import yfinance as yf
+
+# Function to get live stock price
+def get_live_price(stock_symbol):
+    stock = yf.Ticker(stock_symbol)
+    price = stock.history(period="1d")['Close'].iloc[-1]
+    return price
+
+# User input for stock symbol
+stock_symbol = input("Enter a stock symbol (e.g., AAPL for Apple): ")
+live_price = get_live_price(stock_symbol)
+print(f"The current price of {stock_symbol} is: ${live_price:.2f}")
