@@ -1,0 +1,35 @@
+import dash
+from dash import dcc, html
+import yfinance as yf
+import plotly.graph_objs as go
+
+app = dash.Dash(__name__)
+
+app.layout = html.Div([
+    dcc.Input(id='stock-input', value='AAPL', type='text'),
+    html.Button('Submit', id='submit-button', n_clicks=0),
+    dcc.Graph(id='stock-graph')
+])
+
+@app.callback(
+    dash.dependencies.Output('stock-graph', 'figure'),
+    [dash.dependencies.Input('submit-button', 'n_clicks')],
+    [dash.dependencies.State('stock-input', 'value')]
+)
+def update_graph(n_clicks, stock_symbol):
+    stock = yf.Ticker(stock_symbol)
+    data = stock.history(period="1mo")
+    figure = {
+        'data': [
+            go.Scatter(
+                x=data.index,
+                y=data['Close'],
+                mode='lines+markers'
+            )
+        ],
+        'layout': go.Layout(title=f"{stock_symbol} Stock Price")
+    }
+    return figure
+
+if __name__ == '__main__':
+    app.run_server(debug=True)
