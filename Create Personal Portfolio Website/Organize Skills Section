@@ -1,15 +1,32 @@
 <h3 align="left">🛠️ Technologies & Tools</h3>
 <div align="left">
-  <h4>Frontend</h4>
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height="30" alt="javascript logo" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" height="30" alt="react logo" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" height="30" alt="html5 logo" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" height="30" alt="css3 logo" />
-  
-  <h4>Backend</h4>
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" height="30" alt="python logo" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" height="30" alt="csharp logo" />
-  
-  <h4>Other</h4>
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" height="30" alt="typescript logo" />
+  <!-- Frontend Technologies Section -->
+  <h4>🌐 Frontend Development</h4>
+  <p>With 2 years of experience, I have developed responsive and dynamic user interfaces using:</p>
+  <div>
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height="30" alt="javascript logo" />
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" height="30" alt="react logo" />
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" height="30" alt="html5 logo" />
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" height="30" alt="css3 logo" />
+  </div>
+
+  <!-- Backend Technologies Section -->
+  <h4>💻 Backend Development</h4>
+  <p>Building robust and scalable server-side applications using:</p>
+  <div>
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" height="30" alt="python logo" />
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" height="30" alt="csharp logo" />
+  </div>
+
+  <!-- Other Tools Section -->
+  <h4>🔧 Additional Tools & Skills</h4>
+  <p>Enhancing full-stack development with proficiency in:</p>
+  <div>
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" height="30" alt="typescript logo" />
+  </div>
+
+  <!-- Call to Action Section -->
+  <h4>🚀 Let's Connect!</h4>
+  <p>If you're looking for a passionate developer with a strong foundation in both frontend and backend technologies, feel free to reach out!</p>
+  <p>📧 <strong>Email:</strong> [Your Email Here] | <strong>LinkedIn:</strong> [Your LinkedIn Profile Here]</p>
 </div>
