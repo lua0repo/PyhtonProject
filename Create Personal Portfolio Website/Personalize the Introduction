@@ -1,2 +1,66 @@
-<h2 align="left">Hi 👋! My name is [Your Name] and I'm a [Your Role/Profession], from [Your Location].</h2>
-<p align="left">I love coding, exploring new technologies, and building projects that make a difference. Currently, I'm focused on [Your Current Focus/Project].</p>
+<h2 align="left">Hi 👋! My name is [Your Name] and I'm a Python Developer from [Your Location].</h2>
+<p align="left">
+  I have a passion for coding and solving real-world problems with technology. Over the past two years, I’ve built a diverse set of Python projects and explored various technologies, focusing on both front-end and back-end development. I’m currently honing my skills in [Your Current Focus/Project] and am always excited to learn something new!
+</p>
+
+<h3 align="left">Here’s a glimpse into my Python journey:</h3>
+
+<!-- Beginner Projects -->
+<h4 align="left">🔰 Beginner Projects (1st Year)</h4>
+<ul align="left">
+  <li>Hello World GUI</li>
+  <li>Number Guessing Game</li>
+  <li>Calculator</li>
+  <li>To-Do List App</li>
+  <li>Weather App</li>
+  <li>Web Scraper</li>
+  <li>Basic Flask App</li>
+  <li>Hangman Game</li>
+  <li>Dice Roller</li>
+  <li>Currency Converter</li>
+  <li>Text-Based Game</li>
+  <li>Random Password Generator</li>
+  <li>Basic Chatbot</li>
+  <li>Image Downloader</li>
+  <li>Basic Data Visualization</li>
+  <li>Flashcard Quiz App</li>
+  <li>URL Shortener</li>
+  <li>Rock, Paper, Scissors</li>
+  <li>Alarm Clock</li>
+  <li>Guess the Word Game</li>
+</ul>
+
+<!-- Intermediate Projects -->
+<h4 align="left">⚙️ Intermediate Projects (2nd Year)</h4>
+<ul align="left">
+  <li>Personal Portfolio Website</li>
+  <li>Stock Price Tracker</li>
+  <li>Quiz Game with GUI</li>
+  <li>Chat Application</li>
+  <li>Expense Tracker</li>
+  <li>Simple Blog System</li>
+  <li>Password Manager</li>
+  <li>Tic Tac Toe Game with AI</li>
+  <li>Web Scraping with Selenium</li>
+  <li>Book Recommendation</li>
+  <li>RESTful API with Flask</li>
+  <li>Text-Based RPG</li>
+  <li>Interactive Map</li>
+  <li>File Organizer</li>
+  <li>Recipe Book App</li>
+  <li>URL Scraper</li>
+  <li>Snake Game</li>
+  <li>Database-Driven Web App</li>
+  <li>BMI Calculator</li>
+  <li>Machine Learning Model Deployment</li>
+</ul>
+
+<h3 align="left">What’s Next?</h3>
+<p align="left">
+  I’m constantly exploring new ideas and looking to collaborate with like-minded individuals! If you're interested in working on exciting Python projects, learning together, or just want to connect, feel free to reach out!
+</p>
+
+<p align="left">
+  <strong>Let’s connect:</strong> <a href="mailto:[Your Email]">Email me</a> or check out my <a href="[Your Portfolio URL]">Portfolio</a> to see more of my work.
+</p>
+
