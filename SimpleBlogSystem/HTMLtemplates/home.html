@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog Home</title>
+</head>
+<body>
+    <h1>Welcome to the Blog</h1>
+    <a href="{{ url_for('login') }}">Login</a> | <a href="{{ url_for('register') }}">Register</a> | <a href="{{ url_for('create_post') }}">Create Post</a> | <a href="{{ url_for('logout') }}">Logout</a>
+
+    <h2>All Posts</h2>
+    {% for post in posts %}
+        <div>
+            <h3><a href="{{ url_for('post', id=post.id) }}">{{ post.title }}</a></h3>
+            <p>By {{ post.author }} on {{ post.date_posted }}</p>
+            <p>{{ post.content[:100] }}...</p>
+        </div>
+    {% endfor %}
+</body>
+</html>
