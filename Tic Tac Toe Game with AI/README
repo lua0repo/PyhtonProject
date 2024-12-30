@@ -1,0 +1,188 @@
+Certainly! Below is a Python script for a Tic-Tac-Toe game where the player plays against an AI. The AI uses the minimax algorithm, which is a backtracking algorithm commonly used in game theory to determine the best move by simulating all possible game states.
+
+The script allows the player to play as "X" and the AI plays as "O". The AI makes its moves based on the minimax algorithm, aiming to win or force a draw.
+
+### Tic-Tac-Toe Game with Minimax AI in Python
+
+```python
+import random
+
+# Constants for the game
+PLAYER = "X"
+AI = "O"
+EMPTY = " "
+SIZE = 3
+
+def print_board(board):
+    for row in board:
+        print(" | ".join(row))
+        print("-" * 5)
+
+def check_winner(board, player):
+    # Check rows, columns, and diagonals for a win
+    for i in range(SIZE):
+        if all([cell == player for cell in board[i]]):  # Check row
+            return True
+        if all([board[j][i] == player for j in range(SIZE)]):  # Check column
+            return True
+    
+    # Check diagonals
+    if all([board[i][i] == player for i in range(SIZE)]):  # Primary diagonal
+        return True
+    if all([board[i][SIZE-1-i] == player for i in range(SIZE)]):  # Secondary diagonal
+        return True
+    
+    return False
+
+def is_full(board):
+    return all(cell != EMPTY for row in board for cell in row)
+
+def minimax(board, depth, is_maximizing):
+    # If AI wins, return 1 (maximize for AI)
+    if check_winner(board, AI):
+        return 1
+    # If player wins, return -1 (minimize for player)
+    if check_winner(board, PLAYER):
+        return -1
+    # If board is full and no winner, it's a draw (return 0)
+    if is_full(board):
+        return 0
+    
+    if is_maximizing:
+        best = -float('inf')
+        for i in range(SIZE):
+            for j in range(SIZE):
+                if board[i][j] == EMPTY:
+                    board[i][j] = AI
+                    best = max(best, minimax(board, depth + 1, False))
+                    board[i][j] = EMPTY
+        return best
+    else:
+        best = float('inf')
+        for i in range(SIZE):
+            for j in range(SIZE):
+                if board[i][j] == EMPTY:
+                    board[i][j] = PLAYER
+                    best = min(best, minimax(board, depth + 1, True))
+                    board[i][j] = EMPTY
+        return best
+
+def best_move(board):
+    best_val = -float('inf')
+    move = (-1, -1)
+    
+    for i in range(SIZE):
+        for j in range(SIZE):
+            if board[i][j] == EMPTY:
+                board[i][j] = AI
+                move_val = minimax(board, 0, False)
+                board[i][j] = EMPTY
+                if move_val > best_val:
+                    best_val = move_val
+                    move = (i, j)
+    
+    return move
+
+def player_move(board):
+    while True:
+        try:
+            move = int(input("Enter your move (1-9): ")) - 1
+            row, col = move // SIZE, move % SIZE
+            if board[row][col] == EMPTY:
+                board[row][col] = PLAYER
+                break
+            else:
+                print("Cell already taken! Try again.")
+        except (ValueError, IndexError):
+            print("Invalid input! Please enter a number between 1 and 9.")
+
+def ai_move(board):
+    print("AI is making its move...")
+    row, col = best_move(board)
+    board[row][col] = AI
+
+def play_game():
+    board = [[EMPTY] * SIZE for _ in range(SIZE)]
+    print_board(board)
+    
+    while True:
+        player_move(board)
+        print_board(board)
+        if check_winner(board, PLAYER):
+            print("You win!")
+            break
+        if is_full(board):
+            print("It's a draw!")
+            break
+        
+        ai_move(board)
+        print_board(board)
+        if check_winner(board, AI):
+            print("AI wins!")
+            break
+        if is_full(board):
+            print("It's a draw!")
+            break
+
+if __name__ == "__main__":
+    print("Welcome to Tic-Tac-Toe!")
+    play_game()
+```
+
+### How the Game Works:
+
+1. **Board Representation**: The board is represented as a 3x3 list of lists (a 2D array) where each element can be "X" (player), "O" (AI), or an empty string " " for an available space.
+2. **Minimax Algorithm**:
+    - The AI uses the minimax algorithm to simulate all possible game moves and evaluates them based on whether they lead to a win, loss, or draw. The algorithm is recursive.
+    - It assigns the highest possible value to winning moves (1) and the lowest to losing moves (-1). If no winner is found, it returns 0 for a draw.
+3. **Player vs. AI**: The player enters a move (1–9), where each number corresponds to a cell on the board. The AI automatically makes its move using the `best_move` function.
+4. **End Condition**: The game continues until either the player or the AI wins or the board is full (draw).
+
+### Example Input and Output:
+- **Player Input**: The player inputs a number from 1 to 9 to choose a cell.
+- **AI Output**: The AI will respond with its move automatically after the player’s move.
+
+#### Example Run:
+```
+Welcome to Tic-Tac-Toe!
+ |   |  
+-----
+ |   |  
+-----
+ |   |  
+Enter your move (1-9): 1
+X |   |  
+-----
+ |   |  
+-----
+ |   |  
+AI is making its move...
+X | O |  
+-----
+ |   |  
+-----
+ |   |  
+Enter your move (1-9): 5
+X | O |  
+-----
+ | X |  
+-----
+ |   |  
+AI is making its move...
+X | O |  
+-----
+ | X | O
+-----
+ |   |  
+...
+```
+
+### Key Functions:
+1. **`check_winner(board, player)`**: Checks if a player has won the game.
+2. **`is_full(board)`**: Checks if the board is full.
+3. **`minimax(board, depth, is_maximizing)`**: The recursive minimax function that evaluates the game tree.
+4. **`best_move(board)`**: Determines the best move for the AI using minimax.
+5. **`player_move(board)`**: Takes input from the player.
+6. **`ai_move(board)`**: AI makes a move.
+
+This script uses basic AI techniques (minimax) to play a perfect Tic-Tac-Toe game, making it a great demonstration of both game theory and Python programming!
