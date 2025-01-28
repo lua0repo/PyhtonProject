@@ -181,5 +181,3 @@ driver = webdriver.Chrome(options=options)
 
 ### Final Thoughts
 This is just a starting point! The key to mastering Selenium web scraping is to practice on real websites, experiment with different techniques, and stay up-to-date with changes in both Selenium and the web pages you are scraping.
-
-Are you ready to dive in and start scraping some live data, or do you have any questions about specific scenarios you'd like help with?
