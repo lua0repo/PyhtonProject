@@ -1,0 +1,83 @@
+To create a simple Flask web app that connects both the front-end and back-end, follow the steps below. This basic app will consist of:
+
+1. **Flask Setup** - Install Flask and create the app.
+2. **HTML Front-End** - A basic template for user input.
+3. **Back-End Logic** - Handle form submissions and process data.
+
+### Step 1: Install Flask
+
+First, you need to install Flask. In your terminal, run the following command:
+
+```bash
+pip install flask
+```
+
+### Step 2: Create the Flask App
+
+Next, let's create a simple Python file for the back-end. Let's name it `app.py`.
+
+```python
+# app.py
+from flask import Flask, render_template, request
+
+app = Flask(__name__)
+
+# Route to handle the home page
+@app.route('/')
+def home():
+    return render_template('index.html')
+
+# Route to handle the form submission
+@app.route('/submit', methods=['POST'])
+def submit():
+    # Extract form data
+    user_input = request.form['user_input']
+    # You can process the input or return it
+    return f"You entered: {user_input}"
+
+if __name__ == "__main__":
+    app.run(debug=True)
+```
+
+### Step 3: Create the HTML Front-End
+
+Create a folder called `templates` in the same directory as your `app.py`. Inside this folder, create a file named `index.html`.
+
+```html
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask Web App</title>
+</head>
+<body>
+    <h1>Welcome to My Flask Web App</h1>
+    <form action="/submit" method="POST">
+        <label for="user_input">Enter something:</label>
+        <input type="text" id="user_input" name="user_input" required>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
+```
+
+### Step 4: Running the Application
+
+Now, you're ready to run your Flask app! In the terminal, go to the folder containing `app.py` and run:
+
+```bash
+python app.py
+```
+
+Flask will start running on `http://127.0.0.1:5000/`. Open your browser and go to this URL to see your app in action.
+
+### How It Works:
+1. **Home Page (`/`)**: The home route loads the HTML form, which contains a text input.
+2. **Form Submission (`/submit`)**: When the user submits the form, the data is sent via a POST request to the `/submit` route. The back-end takes the input and processes it. In this example, we just return the entered value to the browser.
+
+### Step 5: Customizing and Extending
+You can now customize the front-end by modifying `index.html` and expanding the back-end by adding more routes and logic. For example, you could add more complex forms or integrate with a database.
+
+---
